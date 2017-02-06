@@ -1,0 +1,36 @@
+#
+# define display information
+#
+name: RRoller
+tooltip: |
+    Generates a Rick Roll app panel
+screenshots: []
+
+icon: null
+
+#
+# define a set of similar methods that might be useful to the user
+#
+suggestions:
+    apps:
+        related:
+            []
+        next:
+            []
+    methods:
+        related:
+            []
+        next:
+            []
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    roll_id :
+        ui-name : |
+            Rick Roll Name
+        short-hint : |
+            A placebo parameter to create the semblance of agency
+description : |
+    <p>An app that displays a <a href="https://en.wikipedia.org/wiki/Rickrolling">Rick Roll</a> output window.</p>
