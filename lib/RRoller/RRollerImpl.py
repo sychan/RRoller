@@ -63,6 +63,7 @@ class RRoller:
         # return variables are: output
         #BEGIN rick_roll
         report_name = str(input_params["roll_id"])
+        workspace_name = str(input_params["workspace_name"])
         print "Report name is {}".format(report_name)
         report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
 
@@ -80,7 +81,7 @@ class RRoller:
                      'direct_html_index': 0,
                      'file_links': [],
                      'html_links': [],
-                     'workspace_name': "None",
+                     'workspace_name': workspace_name,
                      'report_object_name': reportName
                      }
 
