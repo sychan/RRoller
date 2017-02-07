@@ -62,12 +62,12 @@ class RRoller:
         # ctx is the context object
         # return variables are: output
         #BEGIN rick_roll
-        report_name = input_params["roll_id"],
+        report_name = input_params["roll_id"][0],
         report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
 
         self.callbackURL = os.environ.get('SDK_CALLBACK_URL')
-        if self.callbackURL == None:
-            raise ValueError ("SDK_CALLBACK_URL not set in environment")
+        if self.callbackURL is None:
+            raise ValueError("SDK_CALLBACK_URL not set in environment")
 
         # build report
         #
