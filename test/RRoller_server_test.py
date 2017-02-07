@@ -79,7 +79,7 @@ class RRollerTest(unittest.TestCase):
         # Second, call your implementation
         ret = self.getImpl().rick_roll(self.getContext(),
                                        {'roll_id': "Test",
-                                        'workspace_name': 'sychan:1485809187627'})
+                                        'workspace_name': 'sychan:home'})
 
         # Validate the returned data
         self.assertIsNotNone(ret[0]["report_name"])
