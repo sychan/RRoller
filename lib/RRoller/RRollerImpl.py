@@ -65,6 +65,9 @@ This sample module contains one small method - filter_contigs.
         # ctx is the context object
         # return variables are: output
         #BEGIN rick_roll
+        output = { 'report_name' : roll_id,
+                   'report_url' : "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+                   }
         #END rick_roll
 
         # At some point might do deeper type checking...
