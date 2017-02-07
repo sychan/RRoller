@@ -62,7 +62,8 @@ class RRoller:
         # ctx is the context object
         # return variables are: output
         #BEGIN rick_roll
-        report_name = input_params["roll_id"][0],
+        report_name = str(input_params["roll_id"])
+        print "Report name is {}".format(report_name)
         report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
 
         self.callbackURL = os.environ.get('SDK_CALLBACK_URL')

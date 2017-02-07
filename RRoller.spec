@@ -12,6 +12,7 @@ module RRoller {
         Assembly data object.
     */
     typedef structure {
+        string workspace_name;
         string roll_id;
     } roll_input;
 

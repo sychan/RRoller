@@ -26,6 +26,10 @@
             "method": "rick_roll",
             "input_mapping": [
                 {
+					"narrative_system_variable": "workspace",
+					"target_property": "workspace_name"
+				},
+                {
                     "input_parameter": "roll_id",
 		            "target_property": "roll_id"
                 }
