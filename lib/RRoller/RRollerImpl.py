@@ -14,7 +14,7 @@ class RRoller:
 
     Module Description:
     A KBase module: RRoller
-This sample module contains one small method - filter_contigs.
+    This sample module contains one small method - rick_roll.
     '''
 
     ######## WARNING FOR GEVENT USERS ####### noqa
@@ -64,6 +64,10 @@ This sample module contains one small method - filter_contigs.
         #BEGIN rick_roll
         report_name = input_params["roll_id"],
         report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+
+        self.callbackURL = os.environ.get('SDK_CALLBACK_URL')
+        if self.callbackURL == None:
+            raise ValueError ("SDK_CALLBACK_URL not set in environment")
 
         # build report
         #
