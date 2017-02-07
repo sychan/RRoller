@@ -88,11 +88,11 @@ class RRoller:
         # html report
         html_report_lines = []
         html_report_lines += ['<html>']
-        html_report_lines += ["<script>"]
-        html_report_lines += ['window.location.assign("https://www.youtube.com/watch?v=oHg5SJYRHA0&autoplay=on")']
-        html_report_lines += ["</script>"]
+        #html_report_lines += ["<script>"]
+        #html_report_lines += ['window.location.assign("https://www.youtube.com/watch?v=oHg5SJYRHA0&autoplay=on")']
+        #html_report_lines += ["</script>"]
         html_report_lines += ['<body bgcolor="white">']
-        html_report_lines += ['<a href="{}">{}</a>'.format(report_url, report_url)]
+        html_report_lines += ['<a target="_blank" href="{}">{}</a>'.format(report_url, report_url)]
         html_report_lines += ['</body>']
         html_report_lines += ['</html>']
 
