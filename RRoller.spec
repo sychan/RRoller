@@ -37,7 +37,7 @@ module RRoller {
     */
     typedef structure {
         string report_name;
-        string report_url;
+        string report_ref;
     } RRoll_Output;
     
     /*

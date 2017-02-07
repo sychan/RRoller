@@ -83,5 +83,5 @@ class RRollerTest(unittest.TestCase):
                                              })
 
         # Validate the returned data
-        self.assertIsNotNone(ret["report_name"])
-        self.assertIsNotNone(ret["report_url"])
+        self.assertIsNotNone(ret[0]["report_name"])
+        self.assertIsNotNone(ret[0]["report_ref"])

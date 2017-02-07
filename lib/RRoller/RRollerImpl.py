@@ -65,9 +65,44 @@ This sample module contains one small method - filter_contigs.
         # ctx is the context object
         # return variables are: output
         #BEGIN rick_roll
-        output = { 'report_name' : roll_id,
-                   'report_url' : "https://www.youtube.com/watch?v=oHg5SJYRHA0"
-                   }
+        report_name = roll_id,
+        report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+        
+        # build report
+        #
+        reportName = 'kb_rickroll_'+report_name+"_"+str(uuid.uuid4())
+
+        reportObj = {'objects_created': [], 
+                     'message': '',
+                     'direct_html': '',
+                     'direct_html_index': 0,
+                     'file_links': [],
+                     'html_links': [],
+                     'workspace_name': "None",
+                     'report_object_name': report_name
+                     }
+
+        # html report
+        sp = '&nbsp;'
+        text_color = "#606060"
+        bar_color = "lightblue"
+        bar_width = 100
+        bar_char = "."
+        bar_fontsize = "-2"
+        row_spacing = "-2"
+
+        html_report_lines = []
+        html_report_lines += ['<html>']
+        html_report_lines += ['<body bgcolor="white">']
+        html_report_lines += ['<a href="{}">{}</a>'.format(report_url,report_url)]
+        html_report_lines += ['</body>']
+        html_report_lines += ['</html>']
+
+        reportObj['direct_html'] = "\n".join(html_report_lines)
+        report = KBaseReport(self.callbackURL, token=ctx['token'], service_ver=SERVICE_VER)
+        report_info = report.create_extended_report(reportObj)
+        output = { 'report_name': report_info['name'], 'report_ref': report_info['ref'] }
+
         #END rick_roll
 
         # At some point might do deeper type checking...
