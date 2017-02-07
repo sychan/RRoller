@@ -2,9 +2,7 @@
 #BEGIN_HEADER
 # The header block is where all import statments should live
 import os
-from Bio import SeqIO
-from pprint import pprint, pformat
-from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
+import uuid
 from KBaseReport.KBaseReportClient import KBaseReport
 #END_HEADER
 
@@ -37,7 +35,7 @@ This sample module contains one small method - filter_contigs.
     # be found
     def __init__(self, config):
         #BEGIN_CONSTRUCTOR
-        
+
         # Any configuration parameters that are important should be parsed and
         # saved in the constructor.
         self.callback_url = os.environ['SDK_CALLBACK_URL']
@@ -46,12 +44,11 @@ This sample module contains one small method - filter_contigs.
         #END_CONSTRUCTOR
         pass
 
-
-    def rick_roll(self, ctx, roll_id):
+    def rick_roll(self, ctx, input_params):
         """
         The actual function is declared using 'funcdef' to specify the name
         and input/return arguments to the function.  For all typical KBase
-        Apps that run in the Narrative, your function should have the 
+        Apps that run in the Narrative, your function should have the
         'authentication required' modifier.
         :param roll_id: instance of String
         :returns: instance of type "RRoll_Output" (Here is the definition of
@@ -65,43 +62,37 @@ This sample module contains one small method - filter_contigs.
         # ctx is the context object
         # return variables are: output
         #BEGIN rick_roll
-        report_name = roll_id,
+        report_name = input_params["roll_id"],
         report_url = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
-        
+
         # build report
         #
-        reportName = 'kb_rickroll_'+report_name+"_"+str(uuid.uuid4())
+        reportName = 'kb_rickroll_{}_{}'.format(report_name, str(uuid.uuid4()))
 
-        reportObj = {'objects_created': [], 
+        reportObj = {'objects_created': [],
                      'message': '',
                      'direct_html': '',
                      'direct_html_index': 0,
                      'file_links': [],
                      'html_links': [],
                      'workspace_name': "None",
-                     'report_object_name': report_name
+                     'report_object_name': reportName
                      }
 
         # html report
-        sp = '&nbsp;'
-        text_color = "#606060"
-        bar_color = "lightblue"
-        bar_width = 100
-        bar_char = "."
-        bar_fontsize = "-2"
-        row_spacing = "-2"
-
         html_report_lines = []
         html_report_lines += ['<html>']
         html_report_lines += ['<body bgcolor="white">']
-        html_report_lines += ['<a href="{}">{}</a>'.format(report_url,report_url)]
+        html_report_lines += ['<a href="{}">{}</a>'.format(report_url, report_url)]
         html_report_lines += ['</body>']
         html_report_lines += ['</html>']
 
         reportObj['direct_html'] = "\n".join(html_report_lines)
+        SERVICE_VER = 'release'
         report = KBaseReport(self.callbackURL, token=ctx['token'], service_ver=SERVICE_VER)
         report_info = report.create_extended_report(reportObj)
-        output = { 'report_name': report_info['name'], 'report_ref': report_info['ref'] }
+        output = {'report_name': report_info['name'],
+                  'report_ref': report_info['ref']}
 
         #END rick_roll
 
@@ -111,6 +102,7 @@ This sample module contains one small method - filter_contigs.
                              'output is not type dict as required.')
         # return the results
         return [output]
+
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",

@@ -27,7 +27,7 @@
             "input_mapping": [
                 {
                     "input_parameter": "roll_id",
-		    "target_argument_position": 0
+		            "target_property": "roll_id"
                 }
             ],
             "output_mapping": [

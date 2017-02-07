@@ -11,7 +11,9 @@ module RRoller {
         a string that should be set to a KBase ID reference to an
         Assembly data object.
     */
-    typedef string roll_input;
+    typedef structure {
+        string roll_input
+    } roll_input;
 
     /*
         A 'typedef' can also be used to define compound or container
@@ -46,6 +48,6 @@ module RRoller {
         Apps that run in the Narrative, your function should have the 
         'authentication required' modifier.
     */
-    funcdef rick_roll(roll_input roll_id)
+    funcdef rick_roll(roll_input input_params)
         returns (RRoll_Output output) authentication required;
 };
